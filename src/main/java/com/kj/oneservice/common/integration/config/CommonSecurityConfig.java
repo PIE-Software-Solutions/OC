@@ -2,7 +2,6 @@ package com.kj.oneservice.common.integration.config;
 
 import static com.kj.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
 import static com.kj.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
-import static com.kj.oneservice.common.integration.util.CommonConstants.SEC_REQ;
 import static com.kj.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 import static com.kj.oneservice.common.integration.util.CommonConstants.YES;
 import static com.kj.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
@@ -57,33 +56,21 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
 		final String METHOD_NAME = "configAuthentication";
-		LOGGER.info(METHOD_NAME, "Checking Security : " + SEC_REQ);
-		if (!isBlank(SEC_REQ) && SEC_REQ.equals(YES)) {
-			authBuilder.jdbcAuthentication().dataSource(oneserviceDataSource).passwordEncoder(passwordEncoder())
-					.usersByUsernameQuery(GET_USERS).authoritiesByUsernameQuery(GET_USER_ROLES);
-		}
+		authBuilder.jdbcAuthentication().dataSource(oneserviceDataSource).passwordEncoder(passwordEncoder())
+				.usersByUsernameQuery(GET_USERS).authoritiesByUsernameQuery(GET_USER_ROLES);
 	}
 
 	@Override
 	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		final String METHOD_NAME = "configure";
-		LOGGER.info(METHOD_NAME, "Checking Security : " + SEC_REQ);
 		
-		if (!isBlank(SEC_REQ) && SEC_REQ.equals(YES)) {
-			httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
-					.antMatchers(ALLOWED_SERVICE_PATHS).authenticated().anyRequest().access("hasRole('ROLE_USER')")
-					.and().authorizeRequests().antMatchers("/shutdown").authenticated().anyRequest()
-					.access("hasRole('ROLE_ADMIN')");
-			httpSecurity.csrf().disable();
-			httpSecurity.httpBasic();
-		} else {
-			httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
-					.antMatchers(ALLOWED_SERVICE_PATHS).permitAll().and().authorizeRequests().antMatchers("/shutdown")
-					.authenticated().anyRequest().access("hasRole('ROLE_ADMIN')");
-			httpSecurity.csrf().disable();
-			httpSecurity.httpBasic();
-		}
+		httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
+				.antMatchers(ALLOWED_SERVICE_PATHS).authenticated().anyRequest().access("hasRole('ROLE_USER')")
+				.and().authorizeRequests().antMatchers("/shutdown").authenticated().anyRequest()
+				.access("hasRole('ROLE_ADMIN')");
+		httpSecurity.csrf().disable();
+		httpSecurity.httpBasic();
 	}
 
 	/**

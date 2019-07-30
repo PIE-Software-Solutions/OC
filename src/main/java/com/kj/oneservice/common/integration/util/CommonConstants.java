@@ -25,12 +25,6 @@ public class CommonConstants {
 	// Listener constants
 	public static final String REQUEST_ID = "REQUEST_ID";
 	public static final String REQUEST_PATTERN = "RequestId";
-	public static final String REQUEST_INTIME_ID = "REQUEST_IN_TIME";
-	public static final String REQUEST_INTIME = "RequestInTime";
-	public static final String REQUEST_OUTTIME_ID = "REQUEST_OUT_TIME";
-	public static final String PROCESS_TIME = "PROCESS_TIME";
-	public static final String PROCESS_TIME_VAL = "ProcessTime";
-	public static final String REQUEST_OUTTIME = "RequestOutTime";
 	public static final String REQUEST_URL = "RequestUri";
 
 	// Filter constants
@@ -60,9 +54,4 @@ public class CommonConstants {
 	public static final String EXCEPTION_RESPONSE = "Please contact Admin. - EXE";
 	public static final String BAD_REQUEST_RESPONSE = "Error / Validation Error";
 	public static final String INTERNAL_EXCEPTION_RESPONSE = "Exception";
-
-	// Security Enable Strings
-	public static String SEC_REQ = "Y";
-	public static String JSON_VAL_REQ = "Y";
-	public static String PC_REQ = "N";
 }

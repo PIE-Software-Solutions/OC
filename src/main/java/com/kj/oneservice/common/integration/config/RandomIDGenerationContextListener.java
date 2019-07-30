@@ -2,8 +2,6 @@ package com.kj.oneservice.common.integration.config;
 
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static com.kj.oneservice.common.integration.util.CommonConstants.YES;
-import static com.kj.oneservice.common.integration.util.CommonConstants.PC_REQ;
-import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,12 +34,6 @@ public class RandomIDGenerationContextListener extends RequestContextListener {
 	public void requestInitialized(ServletRequestEvent requestEvent) {
 
 		MDC.put(REQUEST_PATTERN, UUID.randomUUID());
-		if(PC_REQ.equals(YES)) {
-			Date date = Calendar.getInstance().getTime();  
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-			String inTime = dateFormat.format(date);
-			MDC.put(REQUEST_INTIME, inTime);
-		}
 		LOGGER.debug("Request Initiated for :: " + MDC.get(REQUEST_PATTERN));
 	}
 

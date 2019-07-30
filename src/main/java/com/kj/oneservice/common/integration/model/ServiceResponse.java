@@ -1,23 +1,12 @@
 package com.kj.oneservice.common.integration.model;
 
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
-import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME_ID;
-import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME_ID;
-import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
-import static com.kj.oneservice.common.integration.util.CommonConstants.PC_REQ;
-import static com.kj.oneservice.common.integration.util.CommonConstants.YES;
 import static com.kj.oneservice.common.integration.util.CommonConstants.SUCCESS_RESPONSE;
 import static com.kj.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_ID;
 import static com.kj.oneservice.common.integration.util.SwaggerConstants.EXP_RESPONSE_CODE;
 import static com.kj.oneservice.common.integration.util.SwaggerConstants.EXP_PROCESS_TIME_ID;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.apache.log4j.MDC;
 
@@ -42,14 +31,6 @@ public abstract class ServiceResponse {
 	@JsonProperty(value = "REQUEST_ID", required = true)
 	@ApiModelProperty(position = 1, example = EXP_REQUEST_ID)
 	private Object requestId = MDC.get(REQUEST_PATTERN);
-	
-	@JsonProperty(value = "REQUEST_IN_TIME", required = true)
-	@ApiModelProperty(position = 2, example = REQUEST_INTIME_ID)
-	private Object requestInTime = MDC.get(REQUEST_INTIME);
-	
-	@JsonProperty(value = "REQUEST_OUT_TIME")
-	@ApiModelProperty(position = 3, example = REQUEST_OUTTIME_ID)
-	private Object requestOutTime;
 
 	@JsonProperty(value = "RESPONSE_CODE")
 	@ApiModelProperty(position = 4, example = EXP_RESPONSE_CODE)
@@ -73,42 +54,6 @@ public abstract class ServiceResponse {
 
 	public void setRequestId(Object requestId) {
 		this.requestId = requestId;
-	}
-
-	public Object getRequestInTime() {
-		return requestInTime;
-	}
-
-	public void setRequestInTime(Object requestInTime) {
-		this.requestInTime = requestInTime;
-	}
-
-	public Object getRequestOutTime() {
-		if(PC_REQ.equals("Y")) {
-			Date date = Calendar.getInstance().getTime();  
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-			requestOutTime = dateFormat.format(date);
-		}
-		return requestOutTime;
-	}
-
-	public void setRequestOutTime(Object requestOutTime) {
-		this.requestOutTime = requestOutTime;
-	}	
-
-	public Object getRequestTime() {
-		if(PC_REQ.equals("Y")) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
-		    Date firstDate;
-			try {
-				firstDate = sdf.parse(this.requestOutTime.toString());
-				Date secondDate = sdf.parse(this.requestInTime.toString());
-				requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-			}		 
-		}
-		return requestTime;
 	}
 
 	public void setRequestTime(Object requestTime) {
