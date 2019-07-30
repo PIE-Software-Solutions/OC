@@ -4,8 +4,6 @@ import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME_ID;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME_ID;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
-import static com.kj.oneservice.common.integration.util.CommonConstants.PC_REQ;
-import static com.kj.oneservice.common.integration.util.CommonConstants.YES;
 import static com.kj.oneservice.common.integration.util.CommonConstants.SUCCESS_RESPONSE;
 import static com.kj.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_ID;
 import static com.kj.oneservice.common.integration.util.SwaggerConstants.EXP_RESPONSE_CODE;
@@ -84,11 +82,9 @@ public abstract class ServiceResponse {
 	}
 
 	public Object getRequestOutTime() {
-		if(PC_REQ.equals("Y")) {
-			Date date = Calendar.getInstance().getTime();  
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-			requestOutTime = dateFormat.format(date);
-		}
+		Date date = Calendar.getInstance().getTime();  
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+		requestOutTime = dateFormat.format(date);
 		return requestOutTime;
 	}
 
@@ -97,16 +93,14 @@ public abstract class ServiceResponse {
 	}	
 
 	public Object getRequestTime() {
-		if(PC_REQ.equals("Y")) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
-		    Date firstDate;
-			try {
-				firstDate = sdf.parse(this.requestOutTime.toString());
-				Date secondDate = sdf.parse(this.requestInTime.toString());
-				requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-			}		 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
+	    Date firstDate;
+		try {
+			firstDate = sdf.parse(this.requestOutTime.toString());
+			Date secondDate = sdf.parse(this.requestInTime.toString());
+			requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 		}
 		return requestTime;
 	}

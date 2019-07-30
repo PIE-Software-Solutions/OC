@@ -1,11 +1,18 @@
 package com.kj.oneservice.common.integration.config;
 
+import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
+import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static com.kj.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletException;
@@ -13,6 +20,7 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.MDC;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,6 +82,11 @@ public class AppFilterTest {
 
 	private static AppFilter buildAppFilter() {
 		System.setProperty(SERVICE_NAME, "test");
+		MDC.put(REQUEST_PATTERN, UUID.randomUUID());
+		Date date = Calendar.getInstance().getTime();  
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+		String inTime = dateFormat.format(date);
+		MDC.put(REQUEST_INTIME, inTime);
 		AppFilter appFilter = new AppFilter();
 		return appFilter;
 	}

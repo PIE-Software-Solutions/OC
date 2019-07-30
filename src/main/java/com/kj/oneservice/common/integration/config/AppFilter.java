@@ -3,16 +3,12 @@ package com.kj.oneservice.common.integration.config;
 import static com.kj.oneservice.common.integration.util.CommonConstants.APPLICATION_JSON;
 import static com.kj.oneservice.common.integration.util.CommonConstants.CONTENT_TYPE;
 import static com.kj.oneservice.common.integration.util.CommonConstants.ERROR_CODE;
-import static com.kj.oneservice.common.integration.util.CommonConstants.JSON_VAL_REQ;
-import static com.kj.oneservice.common.integration.util.CommonConstants.PC_REQ;
 import static com.kj.oneservice.common.integration.util.CommonConstants.YES;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_ID;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME_ID;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME_ID;
-import static com.kj.oneservice.common.integration.util.CommonConstants.PROCESS_TIME_VAL;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
-import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME;
 import static com.kj.oneservice.common.integration.util.CommonConstants.REQUEST_URL;
 import static com.kj.oneservice.common.integration.util.CommonConstants.RESPONSE_CODE;
 import static com.kj.oneservice.common.integration.util.CommonConstants.RESPONSE_MESSAGE;
@@ -102,8 +98,8 @@ public class AppFilter implements Filter {
 		}
 
 		LOGGER.info("Incoming Request URI :: " + requestURI + ". Request Method :: " + requestMethod);
-
-		if ("Y".equals(JSON_VAL_REQ) && isNotBlank(requestURI) && isNotBlank(requestMethod)
+		
+		if (isNotBlank(requestURI) && isNotBlank(requestMethod)
 				&& ALLOWED_FILTER_REQUEST_METHODS.contains(requestMethod) && requestURI.contains(SERVICE_NAME)) {
 			ProcessingReport report = null;
 			InputStream schemaStream = null;
@@ -190,22 +186,20 @@ public class AppFilter implements Filter {
 
 		if (null != httpServletResponse && null != resposonseObj) {
 			try {
-				if(PC_REQ.equals(YES)) {
-					Date date = Calendar.getInstance().getTime();  
-					DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-					String outTime = dateFormat.format(date);
-					resposonseObj.put(REQUEST_INTIME_ID, MDC.get(REQUEST_INTIME));
-					resposonseObj.put(REQUEST_OUTTIME_ID, outTime);
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
-				    Date firstDate;
-					try {
-						firstDate = sdf.parse(MDC.get(REQUEST_INTIME).toString());
-						Date secondDate = sdf.parse(outTime);
-						long requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-						resposonseObj.put(REQUEST_OUTTIME_ID, requestTime);
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-					}
+				Date date = Calendar.getInstance().getTime();  
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+				String outTime = dateFormat.format(date);
+				resposonseObj.put(REQUEST_INTIME_ID, MDC.get(REQUEST_INTIME));
+				resposonseObj.put(REQUEST_OUTTIME_ID, outTime);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
+			    Date firstDate;
+				try {
+					firstDate = sdf.parse(MDC.get(REQUEST_INTIME).toString());
+					Date secondDate = sdf.parse(outTime);
+					long requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
+					resposonseObj.put(REQUEST_OUTTIME_ID, requestTime);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
 				}
 				resposonseObj.put(REQUEST_ID, MDC.get(REQUEST_PATTERN));
 				resposonseObj.put(RESPONSE_CODE, responseCode);
