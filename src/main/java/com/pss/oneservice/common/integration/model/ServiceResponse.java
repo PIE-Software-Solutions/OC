@@ -6,6 +6,7 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.SUCCESS_RESPONSE;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_ID;
+import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_IP;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_RESPONSE_CODE;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_PROCESS_TIME_ID;
 
@@ -37,31 +38,35 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
 public abstract class ServiceResponse {
 
-	@JsonProperty(value = "REQUEST_ID", required = true)
+	@JsonProperty(value = "transactionid", required = true)
 	@ApiModelProperty(position = 1, example = EXP_REQUEST_ID)
 	private Object requestId = MDC.get(REQUEST_PATTERN);
 	
-	@JsonProperty(value = "REQUEST_IN_TIME", required = true)
+	@JsonProperty(value = "requestintime", required = true)
 	@ApiModelProperty(position = 2, example = REQUEST_INTIME_ID)
 	private Object requestInTime = MDC.get(REQUEST_INTIME);
 	
-	@JsonProperty(value = "REQUEST_OUT_TIME")
+	@JsonProperty(value = "requestouttime")
 	@ApiModelProperty(position = 3, example = REQUEST_OUTTIME_ID)
 	private Object requestOutTime;
 
-	@JsonProperty(value = "RESPONSE_CODE")
+	@JsonProperty(value = "responsecode")
 	@ApiModelProperty(position = 4, example = EXP_RESPONSE_CODE)
 	private Integer responseCode;
 
-	@JsonProperty(value = "RESPONSE_MSG", required = true)
+	@JsonProperty(value = "responsemessage", required = true)
 	@ApiModelProperty(position = 5, example = SUCCESS_RESPONSE)
 	private String responseMsg;
 	
-	@JsonProperty(value = "PROCESS_TIME")
+	@JsonProperty(value = "elapsedtime")
 	@ApiModelProperty(position = 6, example = EXP_PROCESS_TIME_ID)
 	private Object requestTime;
+	
+	@JsonProperty(value = "clientIp")
+	@ApiModelProperty(position = 7, example = EXP_REQUEST_IP)
+	private Object requestIp;
 
-	@JsonProperty(value = "ERROR")
+	@JsonProperty(value = "error")
 	@ApiModelProperty(hidden = true)
 	private List<ErrorDetails> error;
 
@@ -132,6 +137,13 @@ public abstract class ServiceResponse {
 	public void setError(List<ErrorDetails> error) {
 		this.error = error;
 	}
-	
+
+	public Object getRequestIp() {
+		return requestIp;
+	}
+
+	public void setRequestIp(Object requestIp) {
+		this.requestIp = requestIp;
+	}
 	
 }

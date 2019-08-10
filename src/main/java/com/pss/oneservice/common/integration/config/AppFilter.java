@@ -9,11 +9,15 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME_ID;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_URL;
+import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_IP;
 import static com.pss.oneservice.common.integration.util.CommonConstants.RESPONSE_CODE;
 import static com.pss.oneservice.common.integration.util.CommonConstants.RESPONSE_MESSAGE;
 import static com.pss.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.TAG_INSTANCE;
 import static com.pss.oneservice.common.integration.util.CommonConstants.VALIDATION_ERRORS;
+import static com.pss.oneservice.common.integration.util.CommonConstants.JSON_VAL_REQ;
+import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
+import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.removeEnd;
 import static org.apache.commons.lang3.StringUtils.removeStart;
@@ -96,7 +100,7 @@ public class AppFilter implements Filter {
 		
 		LOGGER.info("Incoming Request URI :: " + requestURI + ". Request Method :: " + requestMethod);
 		
-		if (isNotBlank(requestURI) && isNotBlank(requestMethod)
+		if (YES.equals(JSON_VAL_REQ) &&isNotBlank(requestURI) && isNotBlank(requestMethod)
 				&& ALLOWED_FILTER_REQUEST_METHODS.contains(requestMethod) && requestURI.contains(SERVICE_NAME)) {
 			ProcessingReport report = null;
 			InputStream schemaStream = null;
@@ -181,22 +185,26 @@ public class AppFilter implements Filter {
 
 		if (null != httpServletResponse && null != resposonseObj) {
 			try {
-				Date date = Calendar.getInstance().getTime();  
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-				String outTime = dateFormat.format(date);
-				resposonseObj.put(REQUEST_INTIME_ID, MDC.get(REQUEST_INTIME));
-				resposonseObj.put(REQUEST_OUTTIME_ID, outTime);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
-			    Date firstDate;
-				try {
-					firstDate = sdf.parse(MDC.get(REQUEST_INTIME).toString());
-					Date secondDate = sdf.parse(outTime);
-					long requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-					resposonseObj.put(REQUEST_OUTTIME_ID, requestTime);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
+				if(PC_REQ.equals(YES)) {
+					Date date = Calendar.getInstance().getTime();  
+					DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+					String outTime = dateFormat.format(date);
+					resposonseObj.put(REQUEST_INTIME_ID, MDC.get(REQUEST_INTIME));
+					resposonseObj.put(REQUEST_OUTTIME_ID, outTime);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
+				    Date firstDate;
+					try {
+						firstDate = sdf.parse(MDC.get(REQUEST_INTIME).toString());
+						Date secondDate = sdf.parse(outTime);
+						long requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
+						resposonseObj.put(REQUEST_OUTTIME_ID, requestTime);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+					}
+					resposonseObj.put(REQUEST_ID, MDC.get(REQUEST_IP));
 				}
 				resposonseObj.put(REQUEST_ID, MDC.get(REQUEST_PATTERN));
+				
 				resposonseObj.put(RESPONSE_CODE, responseCode);
 
 				if (null != responseMessage) {

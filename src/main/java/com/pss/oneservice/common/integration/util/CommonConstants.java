@@ -27,6 +27,7 @@ public class CommonConstants {
 	public static final String PROCESS_TIME_VAL = "ProcessTime";
 	public static final String REQUEST_OUTTIME = "RequestOutTime";
 	public static final String REQUEST_URL = "RequestUri";
+	public static final String REQUEST_IP = "RequestIp";
 
 	// Filter constants
 	public static final String CONTENT_TYPE = "Content-Type";
@@ -55,5 +56,10 @@ public class CommonConstants {
 	public static final String EXCEPTION_RESPONSE = "Please contact Admin. - EXE";
 	public static final String BAD_REQUEST_RESPONSE = "Error / Validation Error";
 	public static final String INTERNAL_EXCEPTION_RESPONSE = "Exception";
+	
+	// Security Enable Strings
+	public static String SEC_REQ = "Y";
+	public static String JSON_VAL_REQ = "Y";
+	public static String PC_REQ = "N";
 
 }
