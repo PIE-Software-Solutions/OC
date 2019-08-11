@@ -15,6 +15,7 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.RESPONS
 import static com.pss.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.TAG_INSTANCE;
 import static com.pss.oneservice.common.integration.util.CommonConstants.VALIDATION_ERRORS;
+import static com.pss.oneservice.common.integration.util.CommonConstants.PROCESS_TIME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.JSON_VAL_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
@@ -197,7 +198,7 @@ public class AppFilter implements Filter {
 						firstDate = sdf.parse(MDC.get(REQUEST_INTIME).toString());
 						Date secondDate = sdf.parse(outTime);
 						long requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-						resposonseObj.put(REQUEST_OUTTIME_ID, requestTime);
+						resposonseObj.put(PROCESS_TIME, requestTime);
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 					}
