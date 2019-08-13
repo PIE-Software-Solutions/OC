@@ -49,6 +49,7 @@ import org.apache.log4j.MDC;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -65,6 +66,7 @@ import com.pss.oneservice.common.integration.util.JSONSchemaValidator;
  * @author KARUNAR
  */
 @SuppressWarnings("deprecation")
+@Component
 public class AppFilter implements Filter {
 
 	private static final AppLogger LOGGER = new AppLogger(AppFilter.class.getName());
