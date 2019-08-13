@@ -2,6 +2,9 @@ package com.pss.oneservice.common.integration.config;
 
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
+import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_IP;
+import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
+import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,10 +37,14 @@ public class RandomIDGenerationContextListener extends RequestContextListener {
 	public void requestInitialized(ServletRequestEvent requestEvent) {
 
 		MDC.put(REQUEST_PATTERN, UUID.randomUUID().toString());
-		Date date = Calendar.getInstance().getTime();  
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-		String inTime = dateFormat.format(date);
-		MDC.put(REQUEST_INTIME, inTime);
+		if(null != requestEvent.getServletRequest() && null != requestEvent.getServletRequest().getRemoteAddr())
+			MDC.put(REQUEST_IP, requestEvent.getServletRequest().getRemoteAddr());
+		if(PC_REQ.equals(YES)) {
+			Date date = Calendar.getInstance().getTime();  
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+			String inTime = dateFormat.format(date);
+			MDC.put(REQUEST_INTIME, inTime);
+		}
 		LOGGER.debug("Request Initiated for :: " + MDC.get(REQUEST_PATTERN));
 	}
 

@@ -3,9 +3,17 @@ package com.pss.oneservice.common.integration.model;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME_ID;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_OUTTIME_ID;
+import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.SUCCESS_RESPONSE;
+import static com.pss.oneservice.common.integration.util.CommonConstants.SUCCESS_CODE_STRING;
+import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
+import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_ID;
+import static com.pss.oneservice.common.integration.util.CommonConstants.PROCESS_TIME;
+import static com.pss.oneservice.common.integration.util.CommonConstants.RESPONSE_CODE;
+import static com.pss.oneservice.common.integration.util.CommonConstants.RESPONSE_MESSAGE;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_ID;
+import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_REQUEST_IP;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_RESPONSE_CODE;
 import static com.pss.oneservice.common.integration.util.SwaggerConstants.EXP_PROCESS_TIME_ID;
 
@@ -37,31 +45,35 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
 public abstract class ServiceResponse {
 
-	@JsonProperty(value = "REQUEST_ID", required = true)
+	@JsonProperty(value = REQUEST_ID, required = true)
 	@ApiModelProperty(position = 1, example = EXP_REQUEST_ID)
 	private Object requestId = MDC.get(REQUEST_PATTERN);
 	
-	@JsonProperty(value = "REQUEST_IN_TIME", required = true)
+	@JsonProperty(value = REQUEST_INTIME_ID)
 	@ApiModelProperty(position = 2, example = REQUEST_INTIME_ID)
 	private Object requestInTime = MDC.get(REQUEST_INTIME);
 	
-	@JsonProperty(value = "REQUEST_OUT_TIME")
+	@JsonProperty(value = REQUEST_OUTTIME_ID)
 	@ApiModelProperty(position = 3, example = REQUEST_OUTTIME_ID)
 	private Object requestOutTime;
 
-	@JsonProperty(value = "RESPONSE_CODE")
+	@JsonProperty(value = RESPONSE_CODE, required = true)
 	@ApiModelProperty(position = 4, example = EXP_RESPONSE_CODE)
 	private Integer responseCode;
 
-	@JsonProperty(value = "RESPONSE_MSG", required = true)
+	@JsonProperty(value = RESPONSE_MESSAGE, required = true)
 	@ApiModelProperty(position = 5, example = SUCCESS_RESPONSE)
 	private String responseMsg;
 	
-	@JsonProperty(value = "PROCESS_TIME")
+	@JsonProperty(value = PROCESS_TIME)
 	@ApiModelProperty(position = 6, example = EXP_PROCESS_TIME_ID)
 	private Object requestTime;
+	
+	@JsonProperty(value = "clientIp")
+	@ApiModelProperty(position = 7, example = EXP_REQUEST_IP)
+	private Object requestIp;
 
-	@JsonProperty(value = "ERROR")
+	@JsonProperty(value = "error")
 	@ApiModelProperty(hidden = true)
 	private List<ErrorDetails> error;
 
@@ -82,10 +94,14 @@ public abstract class ServiceResponse {
 	}
 
 	public Object getRequestOutTime() {
-		Date date = Calendar.getInstance().getTime();  
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
-		requestOutTime = dateFormat.format(date);
-		return requestOutTime;
+		if(PC_REQ.equals(YES)) {
+			Date date = Calendar.getInstance().getTime();  
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");  
+			requestOutTime = dateFormat.format(date);
+			return requestOutTime;
+		}else {
+			return null;
+		}
 	}
 
 	public void setRequestOutTime(Object requestOutTime) {
@@ -93,14 +109,16 @@ public abstract class ServiceResponse {
 	}	
 
 	public Object getRequestTime() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
-	    Date firstDate;
-		try {
-			firstDate = sdf.parse(this.requestOutTime.toString());
-			Date secondDate = sdf.parse(this.requestInTime.toString());
-			requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+		if(PC_REQ.equals(YES)) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS", Locale.ENGLISH);
+		    Date firstDate;
+			try {
+				firstDate = sdf.parse(this.requestOutTime.toString());
+				Date secondDate = sdf.parse(this.requestInTime.toString());
+				requestTime = Math.abs(secondDate.getTime() - firstDate.getTime());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+			}
 		}
 		return requestTime;
 	}
@@ -132,6 +150,13 @@ public abstract class ServiceResponse {
 	public void setError(List<ErrorDetails> error) {
 		this.error = error;
 	}
-	
+
+	public Object getRequestIp() {
+		return requestIp;
+	}
+
+	public void setRequestIp(Object requestIp) {
+		this.requestIp = requestIp;
+	}
 	
 }

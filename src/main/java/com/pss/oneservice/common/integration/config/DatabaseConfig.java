@@ -26,6 +26,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * 
  * @author Kiran
  */
+@Profile("!nodbsecurity")
 @Configuration
 @PropertySource("file:${app.home}/${app.prop}.properties")
 public class DatabaseConfig {
@@ -37,43 +38,10 @@ public class DatabaseConfig {
 	 * @return DataSource
 	 */
 	@Bean(name = ONESERVICE_DATA_SOURCE)
-	@Primary
-	@Profile("readonly")
-	@ConfigurationProperties(prefix = "readonly.datasource")
+	@Primary	
+	@ConfigurationProperties(prefix = "jdbc.datasource")
 	public DataSource readonlyOneserviceDataSource(
-			@Value("${readonly.datasource.passwd:readonly.datasource.passwd}") byte[] passwd) {
-		DataSource dataSource = createDataSource(passwd);
-		return dataSource;
-	}
-
-	/**
-	 * Method to build the readwrite data source with supplied DB details
-	 * 
-	 * @param passwd
-	 * @return DataSource
-	 */
-	@Bean(name = ONESERVICE_DATA_SOURCE)
-	@Primary
-	@Profile("readwrite")
-	@ConfigurationProperties(prefix = "readwrite.datasource")
-	public DataSource readwriteOneserviceDataSource(
-			@Value("${readwrite.datasource.passwd:readwrite.datasource.passwd}") byte[] passwd) {
-		DataSource dataSource = createDataSource(passwd);
-		return dataSource;
-	}
-
-	/**
-	 * Method to build the master data source with supplied DB details
-	 * 
-	 * @param passwd
-	 * @return DataSource
-	 */
-	@Bean(name = ONESERVICE_DATA_SOURCE)
-	@Primary
-	@Profile("master")
-	@ConfigurationProperties(prefix = "master.datasource")
-	public DataSource masterOneserviceDataSource(
-			@Value("${master.datasource.passwd:master.datasource.passwd}") byte[] passwd) {
+			@Value("${jdbc.datasource.passwd:jdbc.datasource.passwd}") byte[] passwd) {
 		DataSource dataSource = createDataSource(passwd);
 		return dataSource;
 	}

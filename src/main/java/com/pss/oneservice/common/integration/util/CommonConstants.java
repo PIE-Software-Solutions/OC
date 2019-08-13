@@ -18,21 +18,22 @@ public class CommonConstants {
 	public static String COMMON_SERVICE_SERVICE = "SERVICE";
 
 	// Listener constants
-	public static final String REQUEST_ID = "REQUEST_ID";
+	public static final String REQUEST_ID = "transactionid";
 	public static final String REQUEST_PATTERN = "RequestId";
-	public static final String REQUEST_INTIME_ID = "REQUEST_IN_TIME";
+	public static final String REQUEST_INTIME_ID = "requestintime";
 	public static final String REQUEST_INTIME = "RequestInTime";
-	public static final String REQUEST_OUTTIME_ID = "REQUEST_OUT_TIME";
-	public static final String PROCESS_TIME = "PROCESS_TIME";
+	public static final String REQUEST_OUTTIME_ID = "requestouttime";
+	public static final String PROCESS_TIME = "elapsedtime";
 	public static final String PROCESS_TIME_VAL = "ProcessTime";
 	public static final String REQUEST_OUTTIME = "RequestOutTime";
 	public static final String REQUEST_URL = "RequestUri";
+	public static final String REQUEST_IP = "RequestIp";
 
 	// Filter constants
 	public static final String CONTENT_TYPE = "Content-Type";
 	public static final String APPLICATION_JSON = "application/json";
-	public static final String RESPONSE_CODE = "RESPONSE_CODE";
-	public static final String RESPONSE_MESSAGE = "RESPONSE_MSG";
+	public static final String RESPONSE_CODE = "responsecode";
+	public static final String RESPONSE_MESSAGE = "responsemessage";
 	public static final String VALIDATION_ERRORS = "VALIDATION_ERRORS";
 	public static final String TAG_INSTANCE = "instance";
 
@@ -42,6 +43,7 @@ public class CommonConstants {
 
 	// Response codes
 	public static final int SUCCESS_CODE = 200;
+	public static final String SUCCESS_CODE_STRING = "200";
 	public static final int EXCEPTION_CODE = 203;
 	public static final int ERROR_CODE = 206;
 	public static final int BAD_REQUEST_CODE = 400;
@@ -55,5 +57,10 @@ public class CommonConstants {
 	public static final String EXCEPTION_RESPONSE = "Please contact Admin. - EXE";
 	public static final String BAD_REQUEST_RESPONSE = "Error / Validation Error";
 	public static final String INTERNAL_EXCEPTION_RESPONSE = "Exception";
+	
+	// Security Enable Strings
+	public static String SEC_REQ = "Y";
+	public static String JSON_VAL_REQ = "Y";
+	public static String PC_REQ = "N";
 
 }

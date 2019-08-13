@@ -1,17 +1,13 @@
 package com.pss.oneservice.common.integration.config;
 
 import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
-import static com.pss.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
-import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
-import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USER_ROLES;
 import static com.pss.oneservice.common.integration.util.CommonConstants.SEC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.apache.commons.lang3.StringUtils.isBlank;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,11 +29,12 @@ import com.pss.oneservice.common.integration.util.AppLogger;
  * 
  * @author Kiran
  */
-@Profile("!nodbsecurity")
+@Profile("nodbsecurity")
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @Configuration
-public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
+public class CommonSecurityNoDbConfig extends WebSecurityConfigurerAdapter {
 
-	private final AppLogger LOGGER = new AppLogger(CommonSecurityConfig.class.getName());
+	private final AppLogger LOGGER = new AppLogger(CommonSecurityNoDbConfig.class.getName());
 	/**
 	 * Spring Actuator paths
 	 */
@@ -48,9 +45,6 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 																			"/swagger-resources/**", 
 																			"/v2/api-docs"};
 
-	@Autowired
-	@Qualifier(ONESERVICE_DATA_SOURCE)
-	private DataSource oneserviceDataSource;
 
 	/**
 	 * To configure authentication based on user level access
@@ -60,12 +54,9 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
-		final String METHOD_NAME = "configAuthentication";
-		if (!isBlank(SEC_REQ) && SEC_REQ.equals(YES)) {
-			LOGGER.info(METHOD_NAME, "Checking Security : ");
-			authBuilder.jdbcAuthentication().dataSource(oneserviceDataSource).passwordEncoder(passwordEncoder())
-					.usersByUsernameQuery(GET_USERS).authoritiesByUsernameQuery(GET_USER_ROLES);
-		}
+		authBuilder
+        .inMemoryAuthentication()
+            .withUser("user").password("password").roles("USER");
 	}
 
 	@Override
