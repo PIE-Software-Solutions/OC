@@ -4,12 +4,9 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED
 import static com.pss.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
 import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
 import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USER_ROLES;
-import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.apache.commons.lang3.StringUtils.isBlank;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;

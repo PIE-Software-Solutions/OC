@@ -1,12 +1,9 @@
 package com.pss.oneservice.common.integration.config;
 
 import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
-import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;

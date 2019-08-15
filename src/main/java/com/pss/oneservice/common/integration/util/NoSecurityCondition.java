@@ -17,7 +17,7 @@ public class NoSecurityCondition implements Condition {
 			return false;
 		}
 
-		if (!oneServiceBootClass.isAnnotationPresent(IgnoreSecurity.class)) {
+		if (oneServiceBootClass.isAnnotationPresent(IgnoreSecurity.class)) {
 			return true;
 		}
 		

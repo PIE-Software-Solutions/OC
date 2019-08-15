@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
 
 import com.pss.oneservice.common.integration.annotations.EnablePerformanceCheck;
-import com.pss.oneservice.common.integration.annotations.IgnoreSecurity;
 
 public class OneServiceInit{
 	
