@@ -14,7 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import com.pss.oneservice.common.integration.util.AppLogger;
-import com.pss.oneservice.common.integration.util.NoDataBaseCondition;
+import com.pss.oneservice.common.integration.util.NoSecurityCondition;
 
 /**
  * Common class to configure the authentication security for the users accessing
@@ -24,7 +24,7 @@ import com.pss.oneservice.common.integration.util.NoDataBaseCondition;
  * 
  * @author Kiran
  */
-@Conditional(NoDataBaseCondition.class)
+@Conditional(NoSecurityCondition.class)
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @Configuration
 public class CommonNoSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -54,6 +54,8 @@ public class CommonNoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	@Order(SecurityProperties.BASIC_AUTH_ORDER)
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		final String METHOD_NAME = "configure";
+		LOGGER.info(METHOD_NAME, "Checking Security : ");
 		httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
 				.antMatchers(ALLOWED_SERVICE_PATHS).permitAll().and().authorizeRequests().antMatchers("/shutdown")
 				.authenticated().anyRequest().access("hasRole('ROLE_ADMIN')");

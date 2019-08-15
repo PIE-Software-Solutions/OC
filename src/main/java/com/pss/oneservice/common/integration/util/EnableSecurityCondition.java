@@ -17,7 +17,7 @@ public class EnableSecurityCondition implements Condition {
 			return false;
 		}
 
-		if (oneServiceBootClass.isAnnotationPresent(IgnoreSecurity.class)) {
+		if (!oneServiceBootClass.isAnnotationPresent(IgnoreSecurity.class)) {
 			return true;
 		}
 		
