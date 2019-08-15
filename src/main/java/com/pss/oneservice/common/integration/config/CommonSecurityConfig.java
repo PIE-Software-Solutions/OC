@@ -4,7 +4,6 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED
 import static com.pss.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
 import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
 import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USER_ROLES;
-import static com.pss.oneservice.common.integration.util.CommonConstants.SEC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
 
 import javax.sql.DataSource;
@@ -14,8 +13,8 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +23,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.pss.oneservice.common.integration.util.AppLogger;
+import com.pss.oneservice.common.integration.util.EnableSecurityCondition;
+import com.pss.oneservice.common.integration.util.JdbcDataBaseCondition;
 
 /**
  * Common class to configure the authentication security for the users accessing
@@ -33,7 +34,7 @@ import com.pss.oneservice.common.integration.util.AppLogger;
  * 
  * @author Kiran
  */
-@Profile("!nodbsecurity")
+@Conditional(value = {JdbcDataBaseCondition.class, EnableSecurityCondition.class})
 @Configuration
 public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -61,32 +62,23 @@ public class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
 		final String METHOD_NAME = "configAuthentication";
-		if (!isBlank(SEC_REQ) && SEC_REQ.equals(YES)) {
-			LOGGER.info(METHOD_NAME, "Checking Security : ");
-			authBuilder.jdbcAuthentication().dataSource(oneserviceDataSource).passwordEncoder(passwordEncoder())
-					.usersByUsernameQuery(GET_USERS).authoritiesByUsernameQuery(GET_USER_ROLES);
-		}
+		LOGGER.info(METHOD_NAME, "Checking Security : ");
+		authBuilder.jdbcAuthentication().dataSource(oneserviceDataSource).passwordEncoder(passwordEncoder())
+				.usersByUsernameQuery(GET_USERS).authoritiesByUsernameQuery(GET_USER_ROLES);
 	}
 
 	@Override
 	@Order(SecurityProperties.BASIC_AUTH_ORDER)
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		final String METHOD_NAME = "configure";
-		if (!isBlank(SEC_REQ) && SEC_REQ.equals(YES)) {
-			LOGGER.info(METHOD_NAME, "Checking Security : ");
-			httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
-					.antMatchers(ALLOWED_SERVICE_PATHS).authenticated().anyRequest().access("hasRole('ROLE_USER')")
-					.and().authorizeRequests().antMatchers("/shutdown").authenticated().anyRequest()
-					.access("hasRole('ROLE_ADMIN')");
-			httpSecurity.csrf().disable();
-			httpSecurity.httpBasic();
-		} else {
-			httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
-					.antMatchers(ALLOWED_SERVICE_PATHS).permitAll().and().authorizeRequests().antMatchers("/shutdown")
-					.authenticated().anyRequest().access("hasRole('ROLE_ADMIN')");
-			httpSecurity.csrf().disable();
-			httpSecurity.httpBasic();
-		}
+		LOGGER.info(METHOD_NAME, "Checking Security : ");
+		httpSecurity.authorizeRequests().antMatchers(SPRING_ACTUATOR_PATHS).permitAll().and().authorizeRequests()
+				.antMatchers(ALLOWED_SERVICE_PATHS).authenticated().anyRequest().access("hasRole('ROLE_USER')")
+				.and().authorizeRequests().antMatchers("/shutdown").authenticated().anyRequest()
+				.access("hasRole('ROLE_ADMIN')");
+		httpSecurity.csrf().disable();
+		httpSecurity.httpBasic();
+		
 	}
 
 	/**

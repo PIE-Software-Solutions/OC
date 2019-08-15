@@ -6,7 +6,6 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST
 import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_INTIME;
 import static com.pss.oneservice.common.integration.util.CommonConstants.SUCCESS_RESPONSE;
-import static com.pss.oneservice.common.integration.util.CommonConstants.SUCCESS_CODE_STRING;
 import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
 import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_ID;
 import static com.pss.oneservice.common.integration.util.CommonConstants.PROCESS_TIME;
