@@ -13,11 +13,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.pss.oneservice.common.integration.util.JdbcDataBaseCondition;
 
 /**
  * Configuration class for JDBC template
@@ -26,7 +28,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * 
  * @author Kiran
  */
-@Profile("!nodbsecurity")
+@Conditional(JdbcDataBaseCondition.class)
 @Configuration
 @PropertySource("file:${app.home}/${app.prop}.properties")
 public class DatabaseConfig {
@@ -38,7 +40,7 @@ public class DatabaseConfig {
 	 * @return DataSource
 	 */
 	@Bean(name = ONESERVICE_DATA_SOURCE)
-	@Primary	
+	@Primary
 	@ConfigurationProperties(prefix = "jdbc.datasource")
 	public DataSource readonlyOneserviceDataSource(
 			@Value("${jdbc.datasource.passwd:jdbc.datasource.passwd}") byte[] passwd) {

@@ -59,8 +59,8 @@ public class CommonConstants {
 	public static final String INTERNAL_EXCEPTION_RESPONSE = "Exception";
 	
 	// Security Enable Strings
-	public static String SEC_REQ = "Y";
-	public static String JSON_VAL_REQ = "Y";
+	//public static String SEC_REQ = "Y";
+	//public static String JSON_VAL_REQ = "Y";
 	public static String PC_REQ = "N";
 
 }

@@ -16,7 +16,6 @@ import static com.pss.oneservice.common.integration.util.CommonConstants.SERVICE
 import static com.pss.oneservice.common.integration.util.CommonConstants.TAG_INSTANCE;
 import static com.pss.oneservice.common.integration.util.CommonConstants.VALIDATION_ERRORS;
 import static com.pss.oneservice.common.integration.util.CommonConstants.PROCESS_TIME;
-import static com.pss.oneservice.common.integration.util.CommonConstants.JSON_VAL_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.PC_REQ;
 import static com.pss.oneservice.common.integration.util.CommonConstants.YES;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -48,6 +47,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.MDC;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +56,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jsonschema.core.report.ProcessingMessage;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.pss.oneservice.common.integration.util.AppLogger;
+import com.pss.oneservice.common.integration.util.EnableJsonValidation;
 import com.pss.oneservice.common.integration.util.JSONSchemaValidator;
 
 /**
@@ -66,6 +67,7 @@ import com.pss.oneservice.common.integration.util.JSONSchemaValidator;
  * @author KARUNAR
  */
 @SuppressWarnings("deprecation")
+@Conditional(EnableJsonValidation.class)
 @Component
 public class AppFilter implements Filter {
 
@@ -103,7 +105,7 @@ public class AppFilter implements Filter {
 		
 		LOGGER.info("Incoming Request URI :: " + requestURI + ". Request Method :: " + requestMethod);
 		
-		if (YES.equals(JSON_VAL_REQ) &&isNotBlank(requestURI) && isNotBlank(requestMethod)
+		if (isNotBlank(requestURI) && isNotBlank(requestMethod)
 				&& ALLOWED_FILTER_REQUEST_METHODS.contains(requestMethod) && requestURI.contains(SERVICE_NAME)) {
 			ProcessingReport report = null;
 			InputStream schemaStream = null;
