@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.util;
+package com.piesoftsol.oneservice.common.integration.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;

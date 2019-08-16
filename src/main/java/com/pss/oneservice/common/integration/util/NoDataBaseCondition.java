@@ -1,12 +1,12 @@
-package com.pss.oneservice.common.integration.util;
+package com.piesoftsol.oneservice.common.integration.util;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-import com.pss.oneservice.common.integration.annotations.EnableNoDataBase;
+import com.piesoftsol.oneservice.common.integration.annotations.EnableNoDataBase;
 
-import static com.pss.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
+import static com.piesoftsol.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
 
 public class NoDataBaseCondition implements Condition {
 

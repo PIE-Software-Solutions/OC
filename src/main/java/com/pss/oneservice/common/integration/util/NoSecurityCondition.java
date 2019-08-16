@@ -1,12 +1,12 @@
-package com.pss.oneservice.common.integration.util;
+package com.piesoftsol.oneservice.common.integration.util;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-import com.pss.oneservice.common.integration.annotations.IgnoreSecurity;
+import com.piesoftsol.oneservice.common.integration.annotations.IgnoreSecurity;
 
-import static com.pss.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
+import static com.piesoftsol.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
 
 public class NoSecurityCondition implements Condition {
 

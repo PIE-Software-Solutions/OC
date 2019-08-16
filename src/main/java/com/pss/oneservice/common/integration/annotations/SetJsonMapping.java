@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.annotations;
+package com.piesoftsol.oneservice.common.integration.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

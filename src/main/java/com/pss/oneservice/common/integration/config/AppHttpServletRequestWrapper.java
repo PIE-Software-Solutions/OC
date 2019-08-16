@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

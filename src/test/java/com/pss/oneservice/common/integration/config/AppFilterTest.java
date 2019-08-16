@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.pss.oneservice.common.integration.config.AppFilter;
+import com.piesoftsol.oneservice.common.integration.config.AppFilter;
 
 /**
  * Test case for AppFilter.java. Also covers AppHttpServletRequestWrapper.java

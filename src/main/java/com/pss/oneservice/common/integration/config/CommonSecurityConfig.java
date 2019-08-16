@@ -1,9 +1,9 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
-import static com.pss.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
-import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
-import static com.pss.oneservice.common.integration.util.SQLQueryConstants.GET_USER_ROLES;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
+import static com.piesoftsol.oneservice.common.integration.util.SQLQueryConstants.GET_USERS;
+import static com.piesoftsol.oneservice.common.integration.util.SQLQueryConstants.GET_USER_ROLES;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.pss.oneservice.common.integration.util.AppLogger;
-import com.pss.oneservice.common.integration.util.EnableSecurityCondition;
-import com.pss.oneservice.common.integration.util.JdbcDataBaseCondition;
+import com.piesoftsol.oneservice.common.integration.util.AppLogger;
+import com.piesoftsol.oneservice.common.integration.util.EnableSecurityCondition;
+import com.piesoftsol.oneservice.common.integration.util.JdbcDataBaseCondition;
 
 /**
  * Common class to configure the authentication security for the users accessing

@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -18,9 +18,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.pss.oneservice.common.integration.util.AppLogger;
-import com.pss.oneservice.common.integration.util.EnableSecurityCondition;
-import com.pss.oneservice.common.integration.util.NoDataBaseCondition;
+import com.piesoftsol.oneservice.common.integration.util.AppLogger;
+import com.piesoftsol.oneservice.common.integration.util.EnableSecurityCondition;
+import com.piesoftsol.oneservice.common.integration.util.NoDataBaseCondition;
 
 /**
  * Common class to configure the authentication security for the users accessing

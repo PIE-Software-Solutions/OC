@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.annotations;
+package com.piesoftsol.oneservice.common.integration.annotations;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.COMMON_PACKAGE_STRUCTURE;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_PACKAGE_STRUCTURE;
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
 import java.util.Arrays;
 
@@ -26,11 +26,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-	@Pointcut("execution(* com.pss.*.*.*.*.*(..)) || execution(* com.pss.*.*.*.*.*.*(..))")
+	@Pointcut("execution(* com.piesoftsol.*.*.*.*.*(..)) || execution(* com.piesoftsol.*.*.*.*.*.*(..))")
 	protected void methodEntryExitLogging() {
 	}
 
-	@Pointcut("execution(* com.pss.*.*.integration.dao.*.*(..))")
+	@Pointcut("execution(* com.piesoftsol.*.*.integration.dao.*.*(..))")
 	protected void timeTakenLogging() {
 	}
 
