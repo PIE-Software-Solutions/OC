@@ -1,10 +1,10 @@
-package com.piesoftsol.oneservice.common.integration.config;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.PC_REQ;
+package in.iampsk.oneservice.common.integration.config;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.PC_REQ;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
 
-import com.piesoftsol.oneservice.common.integration.annotations.EnablePerformanceCheck;
+import in.iampsk.oneservice.common.integration.annotations.EnablePerformanceCheck;
 
 public class OneServiceInit{
 	

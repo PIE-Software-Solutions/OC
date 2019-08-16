@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

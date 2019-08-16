@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.util;
+package in.iampsk.oneservice.common.integration.util;
 
 import java.io.IOException;
 import java.io.InputStream;

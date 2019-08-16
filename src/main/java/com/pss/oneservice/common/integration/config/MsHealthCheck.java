@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
 import javax.servlet.annotation.WebListener;
 
@@ -6,7 +6,7 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.context.annotation.Configuration;
 
-import com.piesoftsol.oneservice.common.integration.util.AppLogger;
+import in.iampsk.oneservice.common.integration.util.AppLogger;
 
 @Configuration
 @WebListener

@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.swagger;
+package in.iampsk.oneservice.common.integration.swagger;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -24,8 +24,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.method.HandlerMethod;
 
-import com.piesoftsol.oneservice.common.integration.config.SwaggerConfig;
-import com.piesoftsol.oneservice.common.integration.swagger.SwaggerProxyRequestMappingHandlerMapping;
+import in.iampsk.oneservice.common.integration.config.SwaggerConfig;
+import in.iampsk.oneservice.common.integration.swagger.SwaggerProxyRequestMappingHandlerMapping;
 
 import springfox.documentation.swagger.web.ApiResourceController;
 

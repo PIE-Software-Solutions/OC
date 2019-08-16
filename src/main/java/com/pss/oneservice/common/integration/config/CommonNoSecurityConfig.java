@@ -1,6 +1,6 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.ALLOWED_SERVICE_PATHS;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,8 +13,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import com.piesoftsol.oneservice.common.integration.util.AppLogger;
-import com.piesoftsol.oneservice.common.integration.util.NoSecurityCondition;
+import in.iampsk.oneservice.common.integration.util.AppLogger;
+import in.iampsk.oneservice.common.integration.util.NoSecurityCondition;
 
 /**
  * Common class to configure the authentication security for the users accessing

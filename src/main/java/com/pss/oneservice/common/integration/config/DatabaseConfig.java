@@ -1,7 +1,7 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ONESERVICE_JDBC_TEMPLATE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.ONESERVICE_JDBC_TEMPLATE;
 
 import java.util.Arrays;
 import java.util.Base64;
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.piesoftsol.oneservice.common.integration.util.JdbcDataBaseCondition;
+import in.iampsk.oneservice.common.integration.util.JdbcDataBaseCondition;
 
 /**
  * Configuration class for JDBC template

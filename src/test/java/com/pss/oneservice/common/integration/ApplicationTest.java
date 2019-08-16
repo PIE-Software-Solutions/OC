@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration;
+package in.iampsk.oneservice.common.integration;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.piesoftsol.oneservice.common.integration.Application;
+import in.iampsk.oneservice.common.integration.Application;
 
 /**
  * Test case for Application.java

@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;
@@ -18,8 +18,8 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-import com.piesoftsol.oneservice.common.integration.config.SwaggerConfig;
-import com.piesoftsol.oneservice.common.integration.swagger.ExtendedSwaggerProxyRequestMappingHandlerMapping;
+import in.iampsk.oneservice.common.integration.config.SwaggerConfig;
+import in.iampsk.oneservice.common.integration.swagger.ExtendedSwaggerProxyRequestMappingHandlerMapping;
 
 import io.swagger.models.Swagger;
 import springfox.documentation.service.Documentation;
