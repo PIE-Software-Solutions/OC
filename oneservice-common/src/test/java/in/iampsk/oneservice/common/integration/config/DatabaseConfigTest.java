@@ -40,16 +40,6 @@ public class DatabaseConfigTest {
 		assertNotNull(dataSource);
 		assertArrayEquals(passwdExpected, passwd);
 
-		passwd = PASSWD.getBytes();
-		dataSource = databaseConfig.readwriteOneserviceDataSource(passwd);
-		assertNotNull(dataSource);
-		assertArrayEquals(passwdExpected, passwd);
-
-		passwd = PASSWD.getBytes();
-		dataSource = databaseConfig.masterOneserviceDataSource(passwd);
-		assertNotNull(dataSource);
-		assertArrayEquals(passwdExpected, passwd);
-
 		databaseConfig.oneserviceJdbcTemplate(dataSource);
 	}
 }
