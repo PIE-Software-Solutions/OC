@@ -19,9 +19,9 @@ public class JSONSchemaValidator {
 	/**
 	 * Validates the JSON input against the JSON schema
 	 * 
-	 * @param inputBytes
-	 * @param schemaStream
-	 * @return ProcessingReport
+	 * @param inputBytes parm
+	 * @param schemaStream parm
+	 * @return ProcessingReport parm
 	 */
 	
 	@SuppressWarnings("deprecation")

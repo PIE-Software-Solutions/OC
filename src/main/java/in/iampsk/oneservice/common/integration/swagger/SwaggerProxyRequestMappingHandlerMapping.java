@@ -41,8 +41,8 @@ public class SwaggerProxyRequestMappingHandlerMapping extends RequestMappingHand
 	/**
 	 * Constructor
 	 * 
-	 * @param handler
-	 * @param basePath
+	 * @param handler parm
+	 * @param basePath parm
 	 */
 	public SwaggerProxyRequestMappingHandlerMapping(Object handler, String basePath) {
 		this.handlerObject = handler;
@@ -81,10 +81,10 @@ public class SwaggerProxyRequestMappingHandlerMapping extends RequestMappingHand
 	/**
 	 * Does path mapping with base path
 	 * 
-	 * @param clazz
-	 * @param method
-	 * @param requestMappingInfo
-	 * @param handlerMethod
+	 * @param clazz parm 
+	 * @param method parm
+	 * @param requestMappingInfo parm
+	 * @param handlerMethod parm
 	 */
 	protected void doMapping(Class<?> clazz, Method method, RequestMappingInfo requestMappingInfo,
 			HandlerMethod handlerMethod) {
@@ -134,8 +134,8 @@ public class SwaggerProxyRequestMappingHandlerMapping extends RequestMappingHand
 	/**
 	 * Creates request mapping info
 	 * 
-	 * @param annotatedElement
-	 * @return RequestMappingInfo
+	 * @param annotatedElement parm
+	 * @return RequestMappingInfo parm
 	 */
 	private RequestMappingInfo createRequestMappingInfo(AnnotatedElement annotatedElement) {
 		RequestMappingInfo requestMappingInfo = null;
@@ -155,8 +155,8 @@ public class SwaggerProxyRequestMappingHandlerMapping extends RequestMappingHand
 	/**
 	 * Verifies if the method is valid
 	 * 
-	 * @param method
-	 * @return isValidMethod
+	 * @param method  parm
+	 * @return isValidMethod parm
 	 */
 	private boolean isValidMethod(Method method) {
 		return (AnnotationUtils.findAnnotation(method, RequestMapping.class) != null)
