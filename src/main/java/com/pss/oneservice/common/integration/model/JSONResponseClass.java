@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.model;
+package in.iampsk.oneservice.common.integration.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;

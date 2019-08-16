@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
 import java.util.Arrays;
 
@@ -26,11 +26,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-	@Pointcut("execution(* com.piesoftsol.*.*.*.*.*(..)) || execution(* com.piesoftsol.*.*.*.*.*.*(..))")
+	@Pointcut("execution(* in.iampsk.*.*.*.*.*(..)) || execution(* in.iampsk.*.*.*.*.*.*(..))")
 	protected void methodEntryExitLogging() {
 	}
 
-	@Pointcut("execution(* com.piesoftsol.*.*.integration.dao.*.*(..))")
+	@Pointcut("execution(* in.iampsk.*.*.integration.dao.*.*(..))")
 	protected void timeTakenLogging() {
 	}
 

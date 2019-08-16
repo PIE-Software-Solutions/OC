@@ -1,11 +1,11 @@
-package com.piesoftsol.oneservice.common.integration.util;
+package in.iampsk.oneservice.common.integration.util;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-import com.piesoftsol.oneservice.common.integration.annotations.IgnoreJsonValidation;
-import static com.piesoftsol.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
+import in.iampsk.oneservice.common.integration.annotations.IgnoreJsonValidation;
+import static in.iampsk.oneservice.common.integration.config.OneServiceInit.oneServiceBootClass;
 
 public class DisableJsonValidation implements Condition {
 

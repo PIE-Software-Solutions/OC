@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.swagger;
+package in.iampsk.oneservice.common.integration.swagger;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.util.UriTemplate;
 
-import com.piesoftsol.oneservice.common.integration.util.AppLogger;
+import in.iampsk.oneservice.common.integration.util.AppLogger;
 
 /**
  * Proxy class for Swagger Request mapping handler

@@ -1,14 +1,14 @@
-package com.piesoftsol.oneservice.common.integration.util;
+package in.iampsk.oneservice.common.integration.util;
 
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_ENABLED;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_PWD;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_ROLE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_SERVICE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_TABLE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_USER;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_USER_ROLE_TABLE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_USER_TABLE;
-import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_ENABLED;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_PWD;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_ROLE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_SERVICE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_TABLE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_SERVICE_USER;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_USER_ROLE_TABLE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.COMMON_USER_TABLE;
+import static in.iampsk.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 
 /**
  * Constants file to maintain SQL queries

@@ -1,10 +1,10 @@
-package com.piesoftsol.oneservice.common.integration.util;
+package in.iampsk.oneservice.common.integration.util;
 
 public class CommonConstants {
 	
 	public static String SERVICE_NAME = "service.name";
 	public static String[] ALLOWED_SERVICE_PATHS = new String[] {};
-	public static final String COMMON_PACKAGE_STRUCTURE = "com.piesoftsol.oneservice";
+	public static final String COMMON_PACKAGE_STRUCTURE = "in.iampsk.oneservice";
 
 	// SQL Query Constants
 	public static final String SERVICE_NAME_REPLACEMENT_STRING = "!SERVICE_NAME!";

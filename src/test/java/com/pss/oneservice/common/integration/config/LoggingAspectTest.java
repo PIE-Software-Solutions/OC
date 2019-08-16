@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.config;
+package in.iampsk.oneservice.common.integration.config;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -9,7 +9,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.junit.Test;
 
-import com.piesoftsol.oneservice.common.integration.config.LoggingAspect;
+import in.iampsk.oneservice.common.integration.config.LoggingAspect;
 
 /**
  * Test case for LoggingAspect.java

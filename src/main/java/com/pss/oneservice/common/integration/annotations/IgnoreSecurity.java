@@ -1,4 +1,4 @@
-package com.piesoftsol.oneservice.common.integration.annotations;
+package in.iampsk.oneservice.common.integration.annotations;
 
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
