@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.ONESERVICE_DATA_SOURCE;
 import static org.mockito.Mockito.mock;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.pss.oneservice.common.integration.config.CommonSecurityConfig;
+import com.piesoftsol.oneservice.common.integration.config.CommonSecurityConfig;
 
 /**
  * Test case for CommonSecurityConfig.java

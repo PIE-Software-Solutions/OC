@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.swagger;
+package com.piesoftsol.oneservice.common.integration.swagger;
 
 import java.lang.reflect.Method;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 
-import com.pss.oneservice.common.integration.util.AppLogger;
+import com.piesoftsol.oneservice.common.integration.util.AppLogger;
 
 import springfox.documentation.spring.web.PropertySourcedMapping;
 

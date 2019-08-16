@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.util;
+package com.piesoftsol.oneservice.common.integration.util;
 
-import com.pss.oneservice.common.integration.model.UnKnownResponseModel;
+import com.piesoftsol.oneservice.common.integration.model.UnKnownResponseModel;
 
 import net.sf.cglib.beans.BeanMap;
 

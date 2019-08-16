@@ -1,7 +1,7 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.COMMON_PACKAGE_STRUCTURE;
-import static com.pss.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.COMMON_PACKAGE_STRUCTURE;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.SERVICE_NAME;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,8 +10,8 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.pss.oneservice.common.integration.swagger.ExtendedSwaggerProxyRequestMappingHandlerMapping;
-import com.pss.oneservice.common.integration.swagger.SwaggerProxyRequestMappingHandlerMapping;
+import com.piesoftsol.oneservice.common.integration.swagger.ExtendedSwaggerProxyRequestMappingHandlerMapping;
+import com.piesoftsol.oneservice.common.integration.swagger.SwaggerProxyRequestMappingHandlerMapping;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

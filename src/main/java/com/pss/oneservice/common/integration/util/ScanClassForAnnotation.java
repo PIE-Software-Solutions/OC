@@ -1,11 +1,11 @@
-package com.pss.oneservice.common.integration.util;
+package com.piesoftsol.oneservice.common.integration.util;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 
-import com.pss.oneservice.common.integration.annotations.SetJsonMapping;
+import com.piesoftsol.oneservice.common.integration.annotations.SetJsonMapping;
 
 public class ScanClassForAnnotation {
 
@@ -17,7 +17,7 @@ public class ScanClassForAnnotation {
 
 				scanner.addIncludeFilter(new AnnotationTypeFilter(SetJsonMapping.class));
 				scanner.setResourceLoader(new PathMatchingResourcePatternResolver(classLoader));
-				for (BeanDefinition bd : scanner.findCandidateComponents("com.pss.oneservice"))
+				for (BeanDefinition bd : scanner.findCandidateComponents("com.piesoftsol.oneservice"))
 				    System.out.println("KKKKKKKKKKKKK" + bd.getBeanClassName());
 				
 				System.out.println("OOOOOOOOOOOO");

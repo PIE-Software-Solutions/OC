@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.model;
+package com.piesoftsol.oneservice.common.integration.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

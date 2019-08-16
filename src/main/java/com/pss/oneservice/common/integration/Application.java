@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration;
+package com.piesoftsol.oneservice.common.integration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

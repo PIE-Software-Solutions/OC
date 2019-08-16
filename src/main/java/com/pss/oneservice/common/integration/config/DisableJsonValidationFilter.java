@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_URL;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.REQUEST_URL;
 
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -19,8 +19,8 @@ import org.apache.log4j.MDC;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
-import com.pss.oneservice.common.integration.util.AppLogger;
-import com.pss.oneservice.common.integration.util.DisableJsonValidation;
+import com.piesoftsol.oneservice.common.integration.util.AppLogger;
+import com.piesoftsol.oneservice.common.integration.util.DisableJsonValidation;
 
 /**
  * Application Filter class

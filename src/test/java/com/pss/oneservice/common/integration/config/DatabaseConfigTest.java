@@ -1,4 +1,4 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.pss.oneservice.common.integration.config.DatabaseConfig;
+import com.piesoftsol.oneservice.common.integration.config.DatabaseConfig;
 
 /**
  * Test case for DatabaseConfig.java

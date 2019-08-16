@@ -1,6 +1,6 @@
-package com.pss.oneservice.common.integration.config;
+package com.piesoftsol.oneservice.common.integration.config;
 
-import static com.pss.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
+import static com.piesoftsol.oneservice.common.integration.util.CommonConstants.REQUEST_PATTERN;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
@@ -10,7 +10,7 @@ import javax.servlet.ServletRequestEvent;
 import org.apache.log4j.MDC;
 import org.junit.Test;
 
-import com.pss.oneservice.common.integration.config.RandomIDGenerationContextListener;
+import com.piesoftsol.oneservice.common.integration.config.RandomIDGenerationContextListener;
 
 /**
  * Test case for RandomIDGenerationContextListener.java.
