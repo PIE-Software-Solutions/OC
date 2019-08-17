@@ -5,7 +5,7 @@
 	<groupId>in.iampsk.oneservice.common</groupId>
 	<artifactId>oneservice-common</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 
     <!-- Inherit defaults from Spring Boot -->
 	<parent>
@@ -14,6 +14,34 @@
         <version>2.1.6.RELEASE</version>
 		<relativePath/>
     </parent>
+    <organization>
+		<name>iampsk</name>
+		<url>http://iampsk.in</url>
+	</organization>
+	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+    
+    <scm>
+		<url>https://github.com/PIE-Software-Solutions/oneservice-common</url>
+	</scm>
+	
+	<developers>
+		<developer>
+			<id>kk</id>
+			<name>Kiran Barnana</name>
+			<email>hydsri.kiran at gmail.com</email>
+			<organization>iampsk</organization>
+			<organizationUrl>http://iampsk.in</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+	</developers>
     
     <distributionManagement>
 	  <snapshotRepository>
@@ -117,13 +145,11 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.6</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
-			<version>3.25.2</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -177,8 +203,7 @@
         <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.10.0.pr1</version>
-		</dependency>
+			</dependency>
 		<dependency>
 			<groupId>org.jsonschema2pojo</groupId>
 			<artifactId>jsonschema2pojo-core</artifactId>

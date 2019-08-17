@@ -1,1 +1,0 @@
-# oneservice-common
