@@ -5,7 +5,7 @@
 	<groupId>in.iampsk.oneservice.common</groupId>
 	<artifactId>oneservice-common</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 
     <!-- Inherit defaults from Spring Boot -->
 	<parent>
