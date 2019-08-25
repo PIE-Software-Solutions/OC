@@ -17,11 +17,11 @@ import static java.lang.annotation.ElementType.TYPE;
 @Target({METHOD,TYPE})
 @Retention(RUNTIME)
 @Documented
-@RequestMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+@RequestMapping(consumes = MediaType.APPLICATION_XML_VALUE,
+        produces = MediaType.APPLICATION_XML_VALUE
 )
 @ResponseStatus(HttpStatus.CREATED)
-public @interface SetJsonMapping {
+public @interface SetGetXmlMapping {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
 }
