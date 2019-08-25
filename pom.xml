@@ -2,10 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
 	<groupId>in.iampsk.oneservice.common</groupId>
-	<artifactId>oneservice-common</artifactId>
+    <artifactId>oneservice-common</artifactId>
+	<version>1.0.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<version>1.0.4-SNAPSHOT</version>
+	<name>Spring Boot MicroService FrameWork</name>
+	<description>Spring Boot MicroService FrameWork Library</description>
 
     <!-- Inherit defaults from Spring Boot -->
 	<parent>
@@ -14,8 +17,9 @@
         <version>2.1.6.RELEASE</version>
 		<relativePath/>
     </parent>
+    
     <organization>
-		<name>iampsk</name>
+		<name>Pie Software Solutions</name>
 		<url>http://iampsk.in</url>
 	</organization>
 	
@@ -27,15 +31,15 @@
 	</licenses>
     
     <scm>
-		<url>https://github.com/PIE-Software-Solutions/oneservice-common</url>
+		<url>https://github.com/PIE-Software-Solutions/SpringApiFramework</url>
 	</scm>
 	
 	<developers>
 		<developer>
 			<id>kk</id>
 			<name>Kiran Barnana</name>
-			<email>hydsri.kiran at gmail.com</email>
-			<organization>iampsk</organization>
+			<email>admin at iampsk.in</email>
+			<organization>Kiran</organization>
 			<organizationUrl>http://iampsk.in</organizationUrl>
 			<roles>
 				<role>Project lead</role>
@@ -60,7 +64,8 @@
 		<swagger.version>2.9.2</swagger.version>
 		<swaggerannot.version>2.0.8</swaggerannot.version>
 		<springswagger.version>2.0.0.M1</springswagger.version>
-	    	<netflix-eureka-client.version>2.1.2.RELEASE</netflix-eureka-client.version>
+    	<netflix-eureka-client.version>2.1.2.RELEASE</netflix-eureka-client.version>
+	    	<oauth.version>2.3.5.RELEASE</oauth.version>
 	</properties>
 
     <!-- Add typical dependencies for a web application -->
@@ -143,6 +148,11 @@
 		    <scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+            <version>${oauth.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>compile</scope>
@@ -203,7 +213,11 @@
         <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			</dependency>
+		</dependency>
+		<dependency>
+		  <groupId>com.fasterxml.jackson.dataformat</groupId>
+		  <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.jsonschema2pojo</groupId>
 			<artifactId>jsonschema2pojo-core</artifactId>
@@ -226,7 +240,7 @@
     <!-- Package as an executable jar -->
     <build>
         <plugins>
-			<plugin>
+        	<plugin>
 		      <groupId>org.sonatype.plugins</groupId>
 		      <artifactId>nexus-staging-maven-plugin</artifactId>
 		      <version>1.6.7</version>
@@ -275,6 +289,7 @@
 				</execution>
 			  </executions>
 			</plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -295,6 +310,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+	
 
     <!-- Add Spring repositories -->
     <!-- (you don't need this if you are using a .RELEASE version) -->
